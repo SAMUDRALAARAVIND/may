@@ -1,0 +1,18 @@
+HTML, CSS, Bootstrap
+
+static website (HTML, CSS)
+
+javascript => F2, F3 => F4(React) =>(placement readiness exam) nodejs module 
+
+Frondend application
+backend application
+DSA que
+
+4 lines of code => a, b => a+b, a-b, a*b, a/b
+
+1000 lines of code => 
+
+javscript => every front end role requires js
+
+
+UI/UX => 
