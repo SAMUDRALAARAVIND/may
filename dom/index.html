@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Somethingelse</title>
+    <style>
+        .success {
+            color: green ;
+        }
+        .failure {
+            color: red ;
+        }
+        /* 
+            ~, +, >, space
+        */
+        button:nth-child(1) {
+            background-color: red;
+        }
+        input.input1#one {
+            background-color: blue;
+        }
+        #test {
+            border: 2px solid red ;
+            padding: 20px;
+        }
+        #users-container{
+            padding: 20px;
+            border: 2px solid blue ;
+        }
+        .user-item {
+            background-color: black;
+            border-radius: 4px;
+            color: yellow; 
+            padding: 10px;
+            margin: 4px 0;
+        }
+        #container {
+            border: 2px solid red ;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .user {
+            background-color: blue ;
+            color: white ;
+            padding: 20px;
+            margin: 10px 0 ;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- button, button.input1, button.input2, button:nth-child(1) -->
+    <!-- <button class="input1 input2">Input1 Button</button>
+
+    <input type="email" class="input1" value="aravind" id="one">
+
+    <input type="text" class="input2" id="two">
+
+    <input type="text" class="input1" value="gupta" id="three"> -->
+
+    <!-- <button style="color: red; background-color: blue" id="btn">Something</button>
+
+    <img width="200" height="200" src="./bike.webp" alt="" id="image"> -->
+    <!-- <div class="parent">
+        Parent
+        <div class="child">
+            CHild
+            <p class="grand-child">grand child</p>
+        </div>
+        <button class="btn" id="clickable-button" style="color: blue; font-size: 24px;">Click Me</button>
+    </div> -->
+<!-- 
+    DOM => Document Object Model
+
+    div = {
+        element_type: "div",
+        class: "parent",
+        innerText: "Parent",
+        children: [
+            {
+                element_type: "div",
+                class: "child",
+                innerText: "CHild",
+                children: [
+                    {
+                        class: "grand-child",
+                        element_type: "p" ,
+                        innerText: "grand child"
+                    }
+                ]
+            },
+            {
+                element_type: "button",
+                class: "btn",
+                id: "clickable-button",
+                innerText: "Click Me"
+                style: {
+                    color: "blue",
+                    font_size: "24px"
+                }
+            }
+        ]
+    }
+ -->
+
+    <!-- <script src="./intro.js"></script> -->
+
+   <div id="users-container">
+        
+   </div>
+
+    <!-- Events in DOM -->
+
+    <button onclick="addUser()">Add User</button>
+
+    <script src="dom1.js"></script>
+</body>
+</html>

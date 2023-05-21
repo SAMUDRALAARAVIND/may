@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,500;0,600;0,900;1,500&family=Source+Sans+Pro:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        *{
+            font-family: 'Poppins', sans-serif;
+            font-family: 'Source Sans Pro', sans-serif;
+        }
+        body {
+            background-color: black;
+            color: white;
+        }
+        .form {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+        }
+        .add-user, .filter-button {
+            background-color: white;
+            border: none ;
+            border-radius: 5px;
+            padding: 10px 5px;
+            margin: 10px 0;
+            width: 100px;
+            cursor: pointer;
+        }
+        input, select {
+            padding: 10px 5px;
+            border: none ;
+            border-radius: 4px;
+        }
+        .user {
+            display: flex;
+            justify-content: space-evenly;
+            border: 2px solid gray;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        #container {
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+    </style>
+</head>
+<body>
+    <p>Filter UI cards via their profession</p>
+    
+    <select>
+        <option value="">Profession</option>
+        <option value="developer">Developer</option>
+        <option value="admin">Admin</option>
+    </select>
+
+    <div id="container">
+        <!-- <div class="user">
+            <div>1</div>
+            <div>Name: John</div>
+            <div>Profession: Developer</div>
+            <div>Age: 22</div>
+        </div> -->
+    </div>
+
+    <button class="filter-button" onclick="filterUsers()">Filter</button>
+
+    <p>Add a new User</p>
+
+    <div class="form">
+        <div>
+            <label for="name">Enter Name</label>
+            <input type="text" id="name">
+        </div>
+        <div>
+            <label for="profession">Profession</label>
+            <input type="text" id="profession">
+        </div>
+        <div>
+            <label for="age">Enter age</label>
+            <input type="number" id="age">
+        </div>
+    </div>
+    <button class="add-user" onclick="addNewUser()">Add User</button>
+
+    <script src="./contest-dom.js"></script>
+</body>
+</html>

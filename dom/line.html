@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #line {
+            width: 200px;
+            height: 2px;
+            background-color: black;
+            animation-fill-mode: forwards;
+            transform: rotate(20deg);
+        }
+        .line {
+            animation : rotate 10000000s linear infinite;
+        }
+        .container {
+            width: 500px;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #e7e7e7;
+        }
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(-360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+        <button onclick="showElement()">show</button>
+        <button id="start-stop" onclick="startAnimation()">Start Animation</button>
+        <!-- <button onclick="stopAnimation()">Stop Animation</button> -->
+
+        <div class="container">
+            <div style="transform: rotate(200deg)" id="line" ></div>
+        </div>
+    <script>
+        const container = document.getElementsByClassName("container")[0] ;
+        const button = document.getElementById("start-stop");
+        function showElement() {
+            container.innerHTML = '' ;
+            const div = document.createElement("div")
+            div.id = "line" ;
+            div.className = "line" ;
+            container.append(div);
+        }
+
+        function startAnimation() {
+            const line = document.getElementById("line");
+            // if(line.style.animationDuration == "1s"){
+            //     // animating
+            //     line.style.animationDuration = "100000000s" ;
+            //     button.innerText = "Start Animation" ;
+            // }
+            // else{
+            //     line.style.animationDuration = "1s" ;
+            //     button.innerText = "Stop Animation"
+            // }
+            getComputedStyle
+            console.log(line.style.transform)
+        }
+
+        // function stopAnimation() {
+        //     const line = document.getElementById("line");
+        //     line.className = "" ; 
+        // }
+
+    </script>
+</body>
+</html>
