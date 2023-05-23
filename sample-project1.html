@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+      <style>
+        .user {
+            justify-content: space-between;
+            display: flex;
+            width: 300px;
+            box-shadow: 1px 1px 4px gray;
+            padding: 10px;
+            border-radius: 5px;
+            align-items: center;
+        }
+        .user img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+        .close {
+            color: red !important;
+            border: 1px solid red;
+        }
+        .user span:hover {
+            background-color: gray;
+        }
+        .user span {
+            cursor: pointer;
+            padding: 2px;
+            border-radius: 50%;
+        }
+        .done {
+                color: green !important;
+                border: 1px solid green;
+            }
+        .left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        section {
+            display: grid;
+            gap: 20px;
+            grid-template-columns: repeat(3, 1fr);
+        }
+        section > div {
+            box-shadow: 2px 2px 10px rgb(213, 209, 209) ;
+        }
+      </style>
+
+      <style>
+        .modal-container {
+            background-color: rgba(0, 0, 0, 0.202);
+            position: fixed; 
+            top: 0;
+            left: 0; 
+            bottom: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            display: none;
+        }
+        .modal {
+            background-color: white ;
+            padding: 50px 25px;
+            border-radius: 10px;
+            position: relative;
+        }
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: context-menu;
+        }
+
+        @keyframes transition {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes reverse-transition {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
+        }
+      </style>
+</head>
+<body>
+    
+
+    <!-- <section>
+        <div id="requests">
+            <div class="user">
+                <div class="left">
+                    <img src="person1.jpeg" alt="">
+                    <div>
+                        <b>Aravind</b>
+                        <span>12:30AM</span>
+                    </div>
+                    
+                </div>
+                <div>
+                    <span class="close material-icons">close</span>
+                    <span class="done material-icons" >done</span>
+                </div>
+            </div>
+    
+            <div class="user">
+                <div class="left">
+                    <img src="person3.jpeg" alt="">
+                    <div>
+                        <b>Dikesh Kumar</b>
+                        <span>12:30AM</span>
+                    </div>
+                </div>
+                <div>
+                    <span class="close material-icons" >close</span>
+                    <span class="done material-icons" >done</span>
+                </div>
+            </div>
+    
+            <div class="user">
+                <div class="left">
+                    <img src="person2.jpeg" alt="">
+                    <div>
+                        <b>Shweta pal</b>
+                        <span>12:30AM</span>
+                    </div>
+                    
+                </div>
+                <div>
+                    <span class="close material-icons" id="test" >close</span>
+                    <span class="done material-icons" >done</span>
+                </div>
+            </div>
+        </div>
+    
+        <div id="accepted">
+            <h1>accepted requests</h1>
+        </div>
+        <div id="rejected">
+            <h1>Rejected requests</h1>
+        </div>
+    </section> -->
+
+    <div class="modal-container">
+        <div class="modal">
+            <span class="material-icons close-modal">close</span>
+            <form style="display: flex; flex-direction:column;gap: 20px">
+                <input type="text">
+                <input type="text">
+                <input type="text">
+            </form>
+        </div>
+    </div>
+
+
+    <button id="open">Open Modal</button>
+    <script>
+        const acceptButtons = document.getElementsByClassName("done");
+        const rejectButtons = document.getElementsByClassName("close");
+        const acceptContainer = document.getElementById("accepted");
+        const rejectContainer = document.getElementById("rejected");
+
+        function acceptRequest(event){
+            const buttonRef = event.target;
+            console.log(buttonRef)
+            const parentNode = buttonRef.parentNode.parentNode
+            // const name = parentNode.children[0].children[1].children[0].innerText ;
+            parentNode.children[1].remove();
+            acceptContainer.append(parentNode);
+
+        }
+
+        function rejectRequest(event){
+           const buttonRef = event.target ;
+           const parentNode = buttonRef.parentNode.parentNode;
+           const name = parentNode.children[0].children[1].children[0].innerText ;
+           const buttons = parentNode.children[1].children;
+           for(let i = 0 ; i < buttons.length ; i++) {
+            buttons[i].style.opacity = "0.1"
+           }
+           rejectContainer.append(parentNode);
+        }
+
+        for(let i = 0 ; i < acceptButtons.length; i++) {
+            acceptButtons[i].addEventListener("click" , acceptRequest)
+            rejectButtons[i].addEventListener("click", rejectRequest);
+        }
+    </script>
+
+    <script>
+        const button = document.getElementById("open");
+        button.addEventListener("click", openModal);
+        const container = document.getElementsByClassName("modal-container")[0] ;
+        const closeButton = document.getElementsByClassName("close-modal")[0] ;
+        closeButton.addEventListener("click" ,hideModal)
+        function openModal() {
+            container.style.display = "flex";
+            container.style.animation = "transition 0.8s linear"; 
+        }
+        function hideModal(){
+            container.style.animation = "reverse-transition 0.8s linear";
+            setTimeout(() => {
+                container.style.display = "none" ;
+            }, 800)
+        }
+    </script>
+</body>
+</html>
