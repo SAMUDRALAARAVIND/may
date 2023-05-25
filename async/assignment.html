@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="test()">Generate promise</button>
+    
+
+    <script>
+        function test() {
+            let prom = new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve("hello world!")
+                }, 1000)
+            });
+
+            prom.then((data) => {
+                let text = document.createElement("div");
+                text.innerText = data ;
+                document.body.append(text)
+            })
+        }
+    
+    </script>
+</body>
+</html>
+
+<!-- 
+Promise.all
+Promise.race / any
+callback hell
+async await 
+short project(fetch and promises) 
+-->
