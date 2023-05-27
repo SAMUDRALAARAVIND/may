@@ -26,6 +26,11 @@
         }
     
     </script>
+
+    <script>
+        
+
+    </script>
 </body>
 </html>
 
@@ -36,3 +41,73 @@ callback hell
 async await 
 short project(fetch and promises) 
 -->
+
+
+<!-- 
+
+Promise.all():
+
+The Promise.all() method takes an iterable (usually an array) of promises and returns a new promise.
+This new promise fulfills with an array of all the fulfilled values in the same order as the input promises if all promises fulfill.
+If any promise in the iterable rejects, the returned promise immediately rejects with the reason of that promise.
+javascript
+Copy code
+// Example 1: Promise.all()
+const promise1 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve(1);
+    }, 1000)
+});
+const promise2 = Promise.resolve(2);
+const promise3 = Promise.resolve(3);
+
+Promise.all([promise1, promise2, promise3])
+  .then((results) => {
+    console.log(results); // Output: [1, 2, 3]
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+In the above example, all three promises resolve successfully, so the Promise.all() returns a new promise that fulfills with an array [1, 2, 3].
+Promise.allSettled():
+
+The Promise.allSettled() method takes an iterable of promises and returns a new promise.
+This new promise fulfills with an array of objects representing the outcome of each promise, whether fulfilled or rejected.
+The objects contain the status ("fulfilled" or "rejected") and the value (the fulfilled value or the rejection reason).
+javascript
+Copy code
+// Example 2: Promise.allSettled()
+const promise1 = Promise.resolve(1);
+const promise2 = Promise.reject("Error");
+const promise3 = Promise.resolve(3);
+
+Promise.allSettled([promise1, promise2, promise3])
+  .then((results) => {
+    console.log(results);
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+In the above example, the second promise rejects with an error. The Promise.allSettled() returns a new promise that fulfills with an array of objects:
+[{status: "fulfilled", value: 1}, {status: "rejected", reason: "Error"}, {status: "fulfilled", value: 3}]
+Promise.race():
+
+The Promise.race() method takes an iterable of promises and returns a new promise.
+This new promise settles (fulfills or rejects) as soon as any of the promises in the iterable settles.
+The returned promise settles with the same value or reason as the first settled promise.
+javascript
+Copy code
+// Example 3: Promise.race()
+const promise1 = new Promise((resolve) => setTimeout(resolve, 1000, "First"));
+const promise2 = new Promise((resolve) => setTimeout(resolve, 500, "Second"));
+
+Promise.race([promise1, promise2])
+  .then((result) => {
+    console.log(result); // Output: "Second"
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+In the above example, the second promise settles (fulfills) before the first promise. Therefore, the Promise.race() returns a new promise that fulfills with the value "Second".
+
+ -->
