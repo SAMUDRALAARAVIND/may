@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Validator</title>
+    <style>
+        section {
+            width: 100vw ;
+            height: 100vh ;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        h1{
+            text-align: center;
+        }
+        .code-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .code {
+            width: 30px;
+            height:30px;
+            padding: 20px;
+            border: 0.5px solid gray ;
+            /* border: none ; */
+            border-radius: 5px;
+            font-size: 24px;
+            text-align: center;
+        }
+        .code:focus {
+            outline: none ;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div>
+            <h1 id="verification_heading">Verify Your Account</h1>   
+            <p id="verification_subtext">
+               We emailed you the six digit code to acciojob@gmail.com Enter the code below to confirm your email address. 
+            </p>
+
+            <div class="code-container">
+                <input type="text" maxlength="1" class="code">
+                <input type="text" maxlength="1" class="code">
+                <input type="text" maxlength="1" class="code">
+                <input type="text" maxlength="1" class="code">
+                <input type="text" maxlength="1" class="code">
+                <input type="text" maxlength="1" class="code">
+            </div>
+        </div>
+    </section>
+
+
+    <script>
+        let inputElements = document.getElementsByClassName("code") ;
+
+        for(let i = 0 ; i < inputElements.length ;i++){
+            inputElements[i].addEventListener("keyup", (event) => {
+                let currentElement = event.target ;
+                if(event.key === "Backspace") {
+                    // extract the previous element and then focus on it 
+                    let prevElement =  currentElement.previousElementSibling; 
+                    if(prevElement){
+                        prevElement.focus();
+                    }
+                    return ;
+                }
+
+                let code = event.key.charCodeAt(0) ;
+                if(48 <= code && code <= 57){
+                        let nextElement = currentElement.nextElementSibling
+                        if(nextElement) {
+                            nextElement.focus(); 
+                        }
+                }
+                else {
+                    console.log(event.target.value)
+                    event.target.value = "" ;
+                }
+            })
+        }
+    </script>
+</body>
+</html>

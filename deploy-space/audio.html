@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Player</title>
+    <style>
+        .buttons-container {
+            padding: 40px 20px;
+            background-color: #A064DF;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        button {
+            background-color: #653399;
+            border: none ;
+            color: white ;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+        <div class="buttons-container">
+            <button>applause</button>
+            <button>boo</button>
+            <button>gasp</button>
+            <button>tada</button>
+            <button>victory</button>
+            <button>wrong</button>
+
+            <button id="stop">stop</button>
+        </div>
+
+        <!-- <audio src="./test.mp3" controls></audio> -->
+        <script>
+            let audios = [
+                "applause",
+                "boo",
+                "gasp",
+                "tada",
+                "victory",
+                "wrong"
+            ];
+            let activeAudio = null ;
+
+            const buttons = document.getElementsByTagName("button");
+
+            function playAudio(){
+                stopAudio();
+                activeAudio.play();
+            }
+            function stopAudio(){
+                if(activeAudio){
+                    activeAudio.pause();
+                }
+            }
+
+            for(let i = 0; i < buttons.length; i++) {
+                buttons[i].addEventListener("click", (event) => {
+                    let innerText = event.target.innerText ;
+                    if(audios.includes(innerText)){
+                        // play that particular audio
+                        let audioElement = document.createElement("audio");
+                        audioElement.src = `./test.mp3`;
+                        audioElement.controls = true ;
+                        activeAudio = audioElement;
+                        playAudio();
+                    }
+                    else {
+                        // stop the playing audio
+                        stopAudio();
+                    }
+                })
+            }
+        </script>
+</body>
+</html>
