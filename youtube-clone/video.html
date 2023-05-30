@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Playing Video</title>
+    <link rel="stylesheet" href="./video.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,500;0,600;0,900;1,500&family=Source+Sans+Pro:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        font-family: "Poppins", sans-serif;
+        font-family: "Source Sans Pro", sans-serif;
+      }
+      .video-details {
+        color: white ;
+      }
+      .root-container {
+        display: grid;
+        grid-template-columns: 5fr 2fr;
+      }
+      #comments-container{
+       background-color: #3e3a3a7a;
+        max-height: 100vh;
+        overflow-y: scroll;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="root-container">
+        <div>
+            <div id="aravind"></div>
+            <section>
+                <p id="title"></p>
+                <div class="video-details">
+                </div>
+            </section>
+        </div>
+        <div id="comments-container">
+            <div class="comment">
+                
+            </div>
+
+        </div>
+    </section>
+
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="./video.js"></script>
+  </body>
+</html>

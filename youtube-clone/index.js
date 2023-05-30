@@ -1,5 +1,6 @@
 const searchInput = document.getElementById("search-input");
-const apiKey = "AIzaSyBprXFgJkoIn4TkCLOCXd9HLOujKmt9evk";
+const apiKey = "AIzaSyA5SRKyu5w7Y9q7VXeClI9IxhD9m3nP7ao";
+localStorage.setItem("api_key", apiKey);
 const container = document.getElementById("container");
 
 /*
@@ -48,6 +49,10 @@ function showThumbnails(items) {
     let imageUrl = videoItem.snippet.thumbnails.high.url;
     let videoElement = document.createElement("div");
 
+    videoElement.addEventListener("click", () => {
+      navigateToVideo(videoItem.id.videoId);
+    })
+
     const videoChildren = `
         <img src="${imageUrl}" />
         <b>${formattedData(videoItem.duration)}</b>
@@ -79,49 +84,17 @@ function formattedData(duration) {
     return str ;
 }
   
-
-// < 1000 display as it is 
-// > 1000 & < 999999 => divide with 1000 and add K as suffix
-// >  100000  divide with 100000 and add suffix M
-
-
-
-
-
-// search videos response 
-// {
-//     "kind": "youtube#searchResult",
-//     "etag": "9QlxfO5-nKL90WTAMxSDtT0Wrqk",
-//     "id": {
-//         "kind": "youtube#video",
-//         "videoId": "8ZnU-rRs9Ek"
-//     },
-//     "snippet": {
-//         "publishedAt": "2023-05-29T09:30:07Z",
-//         "channelId": "UC0VN6My1ueOFXDTgzMZSSNQ",
-//         "title": "LOUD exhaust ke wajah se POLICE got angry on me 🤬",
-//         "description": "For Collaborations : jsfilmsindia@gmail.com Follow on Instagram: https://www.instagram.com/jsfilmsindia My SECOND CHANNEL ...",
-//         "thumbnails": {
-//             "default": {
-//                 "url": "https://i.ytimg.com/vi/8ZnU-rRs9Ek/default.jpg",
-//                 "width": 120,
-//                 "height": 90
-//             },
-//             "medium": {
-//                 "url": "https://i.ytimg.com/vi/8ZnU-rRs9Ek/mqdefault.jpg",
-//                 "width": 320,
-//                 "height": 180
-//             },
-//             "high": {
-//                 "url": "https://i.ytimg.com/vi/8ZnU-rRs9Ek/hqdefault.jpg",
-//                 "width": 480,
-//                 "height": 360
-//             }
-//         },
-//         "channelTitle": "JS Films",
-//         "liveBroadcastContent": "none",
-//         "publishTime": "2023-05-29T09:30:07Z"
-//     },
-// }
-
-//1. open a video and load all the comments of that video .
+function navigateToVideo(videoId){
+  let path = `/youtube-clone/video.html`;
+  if(videoId){
+ // video_id: video_id
+    document.cookie = `video_id=${videoId}; path=${path}`
+    let linkItem = document.createElement("a");
+    linkItem.href = "http://127.0.0.1:5500/youtube-clone/video.html"
+    linkItem.target = "_blank" ;
+    linkItem.click();
+  }
+  else {
+    alert("Go and watch in youtube")
+  }
+}
